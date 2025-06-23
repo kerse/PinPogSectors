@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLBMG2GBC2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XLBMG2GBC2');
+    </script>
+    
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PinPog Sectors</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Retro VT323 font -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"/>
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div id="app-container">
+    <div class="canvas-wrapper">
+
+      <!-- Controls panel -->
+      <div id="controls" class="controls">
+        <div class="control">
+          <label for="inpCols">Cols: <span id="labelCols">50</span></label>
+          <input type="range" id="inpCols" min="4" max="150" value="50"/>
+        </div>
+        <div class="control">
+          <label for="inpRows">Rows: <span id="labelRows">50</span></label>
+          <input type="range" id="inpRows" min="4" max="150" value="50"/>
+        </div>
+        <div class="control">
+          <label for="inpSides">Sides: <span id="labelSides">4</span></label>
+          <input type="range" id="inpSides" min="2" max="8" value="4"/>
+        </div>
+        <button id="btnToggle">Start</button>
+      </div>
+
+      <!-- Sound on/off toggle -->
+      <button id="btnSoundToggle" class="sound-toggle" aria-label="Toggle sound">
+        <img id="soundIcon" src="volume-up-fill.svg" alt="Sound on"/>
+      </button>
+
+      <!-- Info toggle -->
+      <button id="btnInfo" class="info-toggle" aria-label="Information">
+        <img id="infoIcon" src="information-2-fill.svg" alt="Info"/>
+      </button>
+
+      <!-- The main canvas -->
+      <canvas id="canvas" width="800" height="800"></canvas>
+
+      <!-- Sector counts -->
+      <div id="info"></div>
+
+    </div>
+  </div>
+
+  <!-- Info modal -->
+  <div id="infoModal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div class="info-content">
+      <button id="btnModalClose" class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="infoModalTitle">About This Demo</h2>
+      <p>© 2025 Kirill Tomilov</p>
+      <p>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/kirtomilov/" target="_blank" rel="noopener">
+          Kirill Tomilov
+        </a>
+      </p>
+      <p>
+        Sounds from the
+        <a href="https://www.facebook.com/sound/collection" target="_blank" rel="noopener">
+          Facebook Sound Collection
+        </a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- simulation script -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+/* styles.css */
+
+/* Import retro monospace font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* —— Base styles —— */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #000;                     /* deep black background */
+  font-family: 'VT323', monospace;      /* retro digital font */
+  color: #fff;                          /* white text */
+}
+
+/* Container that fills the screen */
+#app-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* —— Canvas centering —— */
+.canvas-wrapper {
+  position: absolute;
+  inset: 0;                             /* top/right/bottom/left = 0 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Canvas sizing */
+#canvas {
+  max-width: 70%;
+  max-height: 80vh;
+  background: #111;
+  border-radius: 0.5rem;
+}
+
+/* —— Controls panel —— */
+.controls {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  font-size: 1.6rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 7rem;
+}
+
+.control label {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+/* Slider track */
+.controls input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Slider thumb */
+.controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controls input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+}
+
+/* —— Start/Stop/Restart button —— */
+.controls button {
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  width: 8rem;                /* fixed width to prevent shift */
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;     /* white outline */
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.controls button:hover {
+  opacity: 0.8;
+}
+
+.controls button:active {
+  opacity: 0.6;
+}
+
+/* —— Sound toggle button (top-right) —— */
+.sound-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.sound-toggle img {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  filter: invert(1);            /* make SVG white */
+  transition: filter 0.2s ease;
+}
+
+.sound-toggle:hover img {
+  filter: invert(0.8);
+}
+
+/* —— Info toggle button (top-left) —— */
+.info-toggle {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.info-toggle img {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  filter: invert(1);
+  transition: filter 0.2s ease;
+}
+
+.info-toggle:hover img {
+  filter: invert(0.8);
+}
+
+/* —— Info modal overlay —— */
+.info-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.info-modal.active {
+  display: flex;
+}
+
+/* —— Modal content box —— */
+.info-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  max-width: 90%;
+  width: 400px;
+  box-sizing: border-box;
+  position: relative;
+  text-align: left;
+}
+
+.info-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.info-content p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.info-content a {
+  color: #ffe066;
+  text-decoration: underline;
+}
+
+/* —— Modal close button —— */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #ffe066;
+}
+
+/* —— Counters at bottom —— */
+#info {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.sector-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.4rem;
+}
+
+.sector-info .color-box {
+  width: 1.4rem;
+  height: 1.4rem;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* —— Mobile adjustments —— */
+@media (max-width: 640px) {
+
+  /* Canvas takes full width */
+  #canvas {
+    max-width: 100%;
+    max-height: 60vh;
+  }
+
+  /* Controls move to bottom and stretch */
+  .controls {
+    top: auto;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    gap: 1rem;
+  }
+
+  /* Info counters move to top */
+  #info {
+    top: 0.5rem;
+    bottom: auto;
+    transform: translateX(-50%);
+  }
+
+  /* Modal content smaller on mobile */
+  .info-content {
+    width: 90%;
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .modal-close {
+    font-size: 1.4rem;
+    top: 0.3rem;
+    right: 0.3rem;
+  }
+}
