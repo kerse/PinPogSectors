@@ -33,7 +33,7 @@
     let appliedCols, appliedRows, appliedSides;
 
     let gridCols, gridRows, sidesCount, cellSize, grid, balls, counts;
-    const BALL_SPEED = 3;
+    const BALL_SPEED = 6;
     const SUB_STEPS = 5;
 const stylishPalette = [
   { bg: '#1e1e1e', ball: '#ffe066' },     // Угольно-чёрный фон / жёлтый шарик
